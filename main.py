@@ -1,4 +1,5 @@
 import os
+import sys
 
 
 def count_different_bits(file1, file2):
@@ -63,12 +64,20 @@ def compare_directories(dir1, dir2):
 
 
 if __name__ == "__main__":
-    dir_1 = "/home/tarminik/test/dir_1"
-    dir_2 = "/home/tarminik/test/dir_2"
+
+    dir_1 = input("Введите полное название первой директории: ")
+    while not (os.path.exists(dir_1) and os.path.isdir(dir_1)):
+        print(f"Директория {dir_1} не существует или не является директорией.")
+        dir_1 = input("Введите полное название первой директории: ")
+
+    dir_2 = input("Введите полное название второй директории: ")
+    while not (os.path.exists(dir_2) and os.path.isdir(dir_2)):
+        print(f"Директория {dir_2} не существует или не является директорией.")
+        dir_2 = input("Введите полное название второй директории: ")
 
     identical, similar, only_dir1, only_dir2 = compare_directories(dir_1, dir_2)
 
-    print("Идентичные файлы в формате [file_1, file_2]:")
+    print("\nИдентичные файлы в формате [file_1, file_2]:")
     for file in identical:
         print(file)
 
