@@ -17,7 +17,7 @@ def count_different_bits(file1, file2):
                 different_bits += bin(difference).count('1')
             else:
                 # файлы разной длины, добавляем различия в оставшихся байтах
-                different_bits += 8  # Полагаем, что все биты в оставшихся байтах различны
+                different_bits += 1
 
         return different_bits
 
@@ -42,8 +42,8 @@ def compare_directories(dir1, dir2):
                 idn_or_sim_files.append(file_1)
                 idn_or_sim_files.append(file_2)
             else:
-                size_1 = os.path.getsize(file_1) * 8
-                size_2 = os.path.getsize(file_2) * 8
+                size_1 = os.path.getsize(file_1)
+                size_2 = os.path.getsize(file_2)
                 max_size = max(size_1, size_2)
                 coincidence = (max_size - different_bits) / max_size * 100  # совпадение файлов в процентах
 
